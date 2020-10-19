@@ -30,7 +30,7 @@ public class TemplateContractTest {
      * ]
      */
     @Pact(provider = "user_provider", consumer = "DS - Get List Users")
-    public RequestResponsePact tc01SuccessfulResponseContract(PactDslWithProvider builder) {
+    public RequestResponsePact successfulResponseContract(PactDslWithProvider builder) {
         return builder
             .given("The provider has at least one user")
             .uponReceiving("Get list users") // Description of the request that is expected to be received
@@ -48,10 +48,9 @@ public class TemplateContractTest {
 
     @Test
     @PactVerification("user_provider")
-    public void tc01SuccessfulResponseTest() {
-        System.out.println("This is a test");
+    public void successfulResponseContractTest() {
         RestAssured
-            .given()
+            .given().log().all()
             .baseUri(mockProvider.getUrl())
             .get("/api/v1/users")
             .then()
