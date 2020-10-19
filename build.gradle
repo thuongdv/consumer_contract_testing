@@ -1,5 +1,6 @@
 plugins {
     id 'java'
+    id "au.com.dius.pact" version "4.1.8"
 }
 
 group 'org.example'
@@ -20,4 +21,12 @@ dependencies {
 
 test {
     useJUnit()
+    testLogging {
+        showStandardStreams = true
+        exceptionFormat = "full"
+    }
+}
+
+pact {
+
 }
