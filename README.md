@@ -46,3 +46,11 @@ BUILD SUCCESSFUL in 8s
 ```
 
 The contract files locates in the ~/build/pacts
+
+## To start Pact Broker
+You can clone the [Pack Broker](https://github.com/pact-foundation/pact-broker-docker), then CD to this project, then
+type `docker-compose up -d`.
+
+To check the Broker start successfully, open browser then navigate to http://localhost or https://localhost:8443
+
+For more details of using docker, please google it.
