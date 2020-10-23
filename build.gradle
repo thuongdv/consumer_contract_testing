@@ -3,6 +3,8 @@ plugins {
     id "au.com.dius.pact" version "4.1.8"
 }
 
+apply plugin: "au.com.dius.pact"
+
 group 'org.example'
 version '1.0-SNAPSHOT'
 
@@ -28,5 +30,10 @@ test {
 }
 
 pact {
-
+    publish {
+        println("===START PUBLISHING CONTRACTS===:...")
+        pactDirectory = "$buildDir/pacts"
+        pactBrokerUrl = 'http://localhost'
+        println("===END PUBLISHING CONTRACTS===")
+    }
 }

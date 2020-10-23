@@ -1,3 +1,8 @@
+- [Consumer contract testing example](#consumer-contract-testing-example)
+  * [To run test](#to-run-test)
+  * [To start Pact Broker](#to-start-pact-broker)
+  * [To publish contract file to Broker](#to-publish-contract-file-to-broker)
+
 # Consumer contract testing example
 This is a consumer contract testing with Pact JVM.
 
@@ -8,7 +13,7 @@ Test framework: JUnit
 Build tool: Gradle
 
 ## To run test
-`./gradlew test --info`
+`TERM=cygwin ./gradlew test --info`
 
 The output looks like:
 ```
@@ -54,3 +59,8 @@ type `docker-compose up -d`.
 To check the Broker start successfully, open browser then navigate to http://localhost or https://localhost:8443
 
 For more details of using docker, please google it.
+
+## To publish contract file to Broker
+```
+TERM=cygwin ./gradlew pactPublish --info --build-cache
+```
