@@ -13,15 +13,16 @@ repositories {
 }
 
 dependencies {
-    // https://mvnrepository.com/artifact/au.com.dius.pact.consumer/java8
-    compile group: 'au.com.dius.pact.consumer', name: 'java8', version: '4.1.8'
     // https://mvnrepository.com/artifact/au.com.dius.pact.consumer/junit
-    compile group: 'au.com.dius.pact.consumer', name: 'junit', version: '4.1.8'
+    testCompile group: 'au.com.dius.pact.consumer', name: 'junit', version: '4.1.8'
+    // https://mvnrepository.com/artifact/au.com.dius.pact.consumer/junit5
+    testCompile group: 'au.com.dius.pact.consumer', name: 'junit5', version: '4.1.8'
     // https://mvnrepository.com/artifact/io.rest-assured/rest-assured
     testCompile group: 'io.rest-assured', name: 'rest-assured', version: '4.3.1'
+    testCompile ('org.junit.jupiter:junit-jupiter:5.6.0')
 }
 
-test {
+task testJUnit(type: Test) {
     useJUnit()
     testLogging {
         showStandardStreams = true
@@ -29,11 +30,21 @@ test {
     }
 }
 
-pact {
-    publish {
-        println("===START PUBLISHING CONTRACTS===:...")
-        pactDirectory = "$buildDir/pacts"
-        pactBrokerUrl = 'http://localhost'
-        println("===END PUBLISHING CONTRACTS===")
+task testJUnit5(type: Test) {
+    useJUnitPlatform()
+    testLogging {
+        showStandardStreams = true
+        exceptionFormat = "full"
+    }
+}
+
+if (project.property("pact.publish") == "true") {
+    pact {
+        publish {
+            println("===START PUBLISHING CONTRACTS===:...")
+            pactDirectory = "$buildDir/pacts"
+            pactBrokerUrl = 'http://localhost'
+            println("===END PUBLISHING CONTRACTS===")
+        }
     }
 }

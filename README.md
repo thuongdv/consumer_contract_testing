@@ -8,46 +8,30 @@ This is a consumer contract testing with Pact JVM.
 
 Language: Java
 
-Test framework: JUnit
+Test framework: JUnit/JUnit5
 
 Build tool: Gradle
 
 ## To run test
-`TERM=cygwin ./gradlew test --info`
+`./gradlew testJUnit --info` or `./gradlew testJUnit5 --info` 
 
 The output looks like:
 ```
-$ ./gradlew test --info
+$ ./gradlew testJUnit5 --info
 ...<snip>...
-> Task :test
-...<snip>...
-com.demo.contract.TemplateContractTest > successfulResponseContractTest STANDARD_OUT
-    Request method:     GET
-    Request URI:        http://kubernetes.docker.internal:52724/api/v1/users
-    Proxy:                      <none>
-    Request params:     <none>
-    Query params:       <none>
-    Form params:        <none>
-    Path params:        <none>
-    Headers:            Accept=*/*
-    Cookies:            <none>
-    Multiparts:         <none>
-    Body:                       <none>
-
-Gradle Test Executor 7 finished executing tests.
-
-> Task :test
-Finished generating test XML results (0.004 secs) into: C:\tmp\consumer_contract_testing\build\test-results\test
+> Task :testJUnit5
+Finished generating test XML results (0.003 secs) into: C:\tmp\consumer_contract_testing\build\test-results\testJUnit5
 Generating HTML test report...
-Finished generating test html results (0.009 secs) into: C:\tmp\consumer_contract_testing\build\reports\tests\test
-:test (Thread[Execution worker for ':',5,main]) completed. Took 5.846 secs.
+Finished generating test html results (0.017 secs) into: C:\tmp\consumer_contract_testing\build\reports\tests\testJUnit5
+Stored cache entry for task ':testJUnit5' with cache key 575ba479be19d05ba79e5f3d1b39037e
+:testJUnit5 (Thread[Execution worker for ':',5,main]) completed. Took 5.452 secs.
 
 Deprecated Gradle features were used in this build, making it incompatible with Gradle 7.0.
 Use '--warning-mode all' to show the individual deprecation warnings.
 See https://docs.gradle.org/6.1/userguide/command_line_interface.html#sec:command_line_warnings
 
-BUILD SUCCESSFUL in 8s
-2 actionable tasks: 2 executed
+BUILD SUCCESSFUL in 7s
+2 actionable tasks: 1 executed, 1 up-to-date
 ```
 
 The contract files locates in the ~/build/pacts
